@@ -1,7 +1,7 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, Relation } from "typeorm";
 import { AppBaseEntity } from "../../../common/entities/app-base.entity.js";
 import { Model } from "./model.entity.js";
-import { Vehicle } from "../enums/vehicle.entity.js";
+import { Vehicle } from "./vehicle.entity.js";
 
 @Entity({ name: 'vehicle_variants' })
 export class VehicleVariant extends AppBaseEntity {

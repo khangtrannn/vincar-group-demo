@@ -2,7 +2,7 @@ import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, Relation } fro
 import { AppBaseEntity } from "../../../common/entities/app-base.entity.js";
 import { Make } from "./make.entity.js";
 import { VehicleVariant } from "./vehicle-variant.entity.js";
-import { Vehicle } from "../enums/vehicle.entity.js";
+import { Vehicle } from "./vehicle.entity.js";
 
 export enum VehicleBodyType {
   SEDAN = 'SEDAN',

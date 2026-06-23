@@ -1,12 +1,12 @@
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, Relation } from "typeorm";
 import { AppBaseEntity } from "../../../common/entities/app-base.entity.js";
-import { Company } from "../entities/company.entity.js";
-import { Model } from "../entities/model.entity.js";
-import { VehicleVariant } from "../entities/vehicle-variant.entity.js";
-import { Color } from "../entities/color.entity.js";
-import { VehicleInventoryStatus } from "./vehicle-inventory-status.enum.js";
-import { VehicleCategory } from "./vehicle-category.enum.js";
-import { VehicleImage } from "../entities/vehicle-image.entity.js";
+import { Company } from "./company.entity.js";
+import { Model } from "./model.entity.js";
+import { VehicleVariant } from "./vehicle-variant.entity.js";
+import { Color } from "./color.entity.js";
+import { VehicleInventoryStatus } from "../enums/vehicle-inventory-status.enum.js";
+import { VehicleCategory } from "../enums/vehicle-category.enum.js";
+import { VehicleImage } from "./vehicle-image.entity.js";
 
 @Entity({ name: 'vehicles' })
 export class Vehicle extends AppBaseEntity {

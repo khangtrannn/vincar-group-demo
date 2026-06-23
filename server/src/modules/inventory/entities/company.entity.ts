@@ -1,6 +1,6 @@
 import { Column, Entity, Index, OneToMany, Relation } from "typeorm";
 import { AppBaseEntity } from "../../../common/entities/app-base.entity.js";
-import { Vehicle } from "../enums/vehicle.entity.js";
+import { Vehicle } from "./vehicle.entity.js";
 
 @Entity({ name: 'companies' })
 @Index('UQ_companies_name', ['name'], { unique: true })
