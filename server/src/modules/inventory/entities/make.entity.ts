@@ -1,5 +1,6 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, OneToMany, Relation } from "typeorm";
 import { AppBaseEntity } from "../../../common/entities/app-base.entity.js";
+import { Model } from "./model.entity.js";
 
 @Entity({ name: 'makes' })
 export class Make extends AppBaseEntity {
@@ -8,4 +9,7 @@ export class Make extends AppBaseEntity {
 
   @Column({ type: 'jsonb', nullable: true })
   metadata!: Record<string, unknown> | null;
+
+  @OneToMany(() => Model, (model) => model.make)
+  models!: Relation<Model[]>;
 }
