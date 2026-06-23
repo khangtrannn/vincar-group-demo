@@ -1,0 +1,45 @@
+import 'reflect-metadata';
+import 'dotenv/config';
+import { AppDataSource } from './db/data-source';
+import { app } from './app';
+
+const PORT = Number(process.env.PORT);
+const HOST = process.env.HOST!;
+
+async function bootstrap() {
+  try {
+    await AppDataSource.initialize();
+
+    console.log('Database connected successfully');
+
+    const server = app.listen(PORT, HOST, () => {
+      console.log(`Server is running at http://${HOST}:${PORT}`);
+    });
+
+    async function shutdown(signal: NodeJS.Signals) {
+      console.log(`${signal} received. Shutting down...`)
+
+      server.close(async () => {
+        try {
+          if (AppDataSource.isInitialized) {
+            await AppDataSource.destroy()
+            console.log('Database connection closed')
+          }
+
+          process.exit(0)
+        } catch (error) {
+          console.error('Error during shutdown:', error)
+          process.exit(1)
+        }
+      })
+    }
+
+    process.on('SIGINT', shutdown)
+    process.on('SIGTERM', shutdown)
+  } catch (error) {
+    console.log('Failed to start application', error);
+    process.exit(1);
+  }
+}
+
+void bootstrap();
