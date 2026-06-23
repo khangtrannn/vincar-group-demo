@@ -1,5 +1,5 @@
 import { Column, Entity, Index } from "typeorm";
-import { AppBaseEntity } from "../../../common/entities/app-base.entity";
+import { AppBaseEntity } from "../../../common/entities/app-base.entity.js";
 
 @Entity({ name: 'companies' })
 @Index('UQ_companies_name', ['name'], { unique: true })
