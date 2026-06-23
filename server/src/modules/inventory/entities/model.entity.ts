@@ -1,6 +1,8 @@
-import { Column, Entity, Index, JoinColumn, ManyToOne, Relation } from "typeorm";
+import { Column, Entity, Index, JoinColumn, ManyToOne, OneToMany, Relation } from "typeorm";
 import { AppBaseEntity } from "../../../common/entities/app-base.entity.js";
 import { Make } from "./make.entity.js";
+import { VehicleVariant } from "./vehicle-variant.entity.js";
+import { Vehicle } from "../enums/vehicle.entity.js";
 
 export enum VehicleBodyType {
   SEDAN = 'SEDAN',
@@ -61,4 +63,10 @@ export class Model extends AppBaseEntity {
     nullable: true,
   })
   fuelType!: VehicleFuelType | null;
+
+  @OneToMany(() => VehicleVariant, vehicleVariant => vehicleVariant.model)
+  vehicleVariants!: Relation<VehicleVariant[]>;
+
+  @OneToMany(() => Vehicle, vehicle => vehicle.model)
+  vehicles!: Relation<Vehicle[]>;
 }
