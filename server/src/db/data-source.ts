@@ -1,21 +1,21 @@
 import 'dotenv/config';
+import 'reflect-metadata';
+
 import { join } from 'node:path';
-import { config } from 'dotenv';
-import { DataSource } from 'typeorm'
-import { Company } from '../modules/inventory/entities/company.entity';
+import { DataSource } from 'typeorm';
 
-config();
+const isProduction = process.env.NODE_ENV === 'production';
 
-const isProduction = process.env.NODE_ENV === 'production'
-const databaseUrl = process.env.DATABASE_URL;
-
-export const AppDataSource = new DataSource({
+const AppDataSource = new DataSource({
   type: 'postgres',
-  url: databaseUrl,
+  url: process.env.DATABASE_URL,
 
-  entities: [Company],
-  migrations: ['dist/migrations/*.js'],
+  entities: [join(__dirname, '../modules/**/*.entity{.js,.ts}')],
+  migrations: [join(__dirname, './migrations/*{.js,.ts}')],
 
   synchronize: false,
+  migrationsRun: false,
   logging: !isProduction,
-})
+});
+
+export default AppDataSource;
