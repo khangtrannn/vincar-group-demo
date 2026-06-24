@@ -3,26 +3,8 @@ import { AppBaseEntity } from "../../../common/entities/app-base.entity.js";
 import { Make } from "./make.entity.js";
 import { VehicleVariant } from "./vehicle-variant.entity.js";
 import { Vehicle } from "./vehicle.entity.js";
-
-export enum VehicleBodyType {
-  SEDAN = 'SEDAN',
-  SUV = 'SUV',
-  MPV = 'MPV',
-  HATCHBACK = 'HATCHBACK',
-  COUPE = 'COUPE',
-  CONVERTIBLE = 'CONVERTIBLE',
-  VAN = 'VAN',
-  WAGON = 'WAGON',
-  PICKUP = 'PICKUP',
-}
-
-export enum VehicleFuelType {
-  PETROL = 'PETROL',
-  DIESEL = 'DIESEL',
-  HYBRID = 'HYBRID',
-  ELECTRIC = 'ELECTRIC',
-  PLUG_IN_HYBRID = 'PLUG_IN_HYBRID',
-}
+import { VehicleBodyType } from "../enums/vehicle-body-type.enum.js";
+import { VehicleFuelType } from "../enums/vehicle-fuel-type.enum.js";
 
 @Entity({ name: 'models' })
 @Index(['makeId', 'name'], { unique: true })

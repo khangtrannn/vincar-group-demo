@@ -10,8 +10,8 @@ import http from 'http';
 
 import { AppDataSource } from './db/data-source.js';
 import { createApp } from './app.js';
-import { createGraphQLSchema } from './graphql/schema.js';
-import { GraphQLContext } from './graphql/context.js';
+import { createGraphQLSchema } from './common/graphql/schema.js';
+import { GraphQLContext } from './common/graphql/context.js';
 
 const PORT = Number(process.env.PORT);
 const APP_HOST = process.env.APP_HOST!;
