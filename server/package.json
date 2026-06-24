@@ -18,6 +18,7 @@
     "db:migrate": "typeorm-ts-node-esm migration:run -d src/db/data-source.ts",
     "db:revert": "typeorm-ts-node-esm migration:revert -d src/db/data-source.ts",
     "db:show": "typeorm-ts-node-esm migration:show -d src/db/data-source.ts",
+    "seed": "tsx src/db/seed.ts",
     "db:migrate:prod": "typeorm migration:run -d dist/db/data-source.js",
     "db:revert:prod": "typeorm migration:revert -d dist/db/data-source.js",
     "db:show:prod": "typeorm migration:show -d dist/db/data-source.js"

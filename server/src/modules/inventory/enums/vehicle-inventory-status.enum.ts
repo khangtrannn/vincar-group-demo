@@ -1,6 +1,4 @@
 export enum VehicleInventoryStatus {
-  AVAILABLE = 'AVAILABLE',
-  RESERVED = 'RESERVED',
-  SOLD = 'SOLD',
-  UNAVAILABLE = 'UNAVAILABLE',
+  AVAILABLE = "AVAILABLE",
+  DELIVERED = "DELIVERED",
 }
