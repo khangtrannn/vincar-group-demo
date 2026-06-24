@@ -14,13 +14,43 @@ export class VehicleType {
   @Field(() => ID)
   id!: string;
 
-  @Field()
+  @Field(() => ID)
+  companyId!: string;
+
+  @Field(() => CompanyType)
+  company!: CompanyType;
+
+  @Field(() => ID)
+  modelId!: string;
+
+  @Field(() => ModelType)
+  model!: ModelType;
+
+  @Field(() => ID, { nullable: true })
+  vehicleVariantId!: string | null;
+
+  @Field(() => VehicleVariantType, { nullable: true })
+  vehicleVariant!: VehicleVariantType | null;
+
+  @Field(() => ID, { nullable: true })
+  exteriorColorId!: string | null;
+
+  @Field(() => ColorType, { nullable: true })
+  exteriorColor!: ColorType | null;
+
+  @Field(() => ID, { nullable: true })
+  interiorColorId!: string | null;
+
+  @Field(() => ColorType, { nullable: true })
+  interiorColor!: ColorType | null;
+
+  @Field(() => String)
   vincarId!: string;
 
-  @Field()
+  @Field(() => String)
   name!: string;
 
-  @Field()
+  @Field(() => Boolean)
   isUsed!: boolean;
 
   @Field(() => VehicleInventoryStatus)
@@ -35,23 +65,8 @@ export class VehicleType {
   @Field(() => Int, { nullable: true })
   leasingMonthlyPrice!: number | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   imgUrl!: string | null;
-
-  @Field(() => CompanyType)
-  company!: CompanyType;
-
-  @Field(() => ModelType)
-  model!: ModelType;
-
-  @Field(() => VehicleVariantType, { nullable: true })
-  vehicleVariant!: VehicleVariantType | null;
-
-  @Field(() => ColorType, { nullable: true })
-  exteriorColor!: ColorType | null;
-
-  @Field(() => ColorType, { nullable: true })
-  interiorColor!: ColorType | null;
 
   @Field(() => GraphQLJSONObject, { nullable: true })
   metadata!: Record<string, unknown> | null;
@@ -59,6 +74,14 @@ export class VehicleType {
   @Field(() => GraphQLJSONObject, { nullable: true })
   usedCarMetadata!: Record<string, unknown> | null;
 
-  @Field(() => [VehicleImageType], { nullable: true })
-  images?: VehicleImageType[];
+  @Field(() => [VehicleImageType])
+  images!: VehicleImageType[];
+
+  @Field(() => Date)
+  createdAt!: Date;
+
+  @Field(() => Date)
+  updatedAt!: Date;
 }
+
+

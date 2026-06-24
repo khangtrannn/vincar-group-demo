@@ -1,10 +1,10 @@
 import { DataSource, In } from "typeorm";
 import { Vehicle } from "../entities/vehicle.entity.js";
 
-export type GetPublishedVPLVehicleParams = {
+export type GetPublishedVPLVehiclesParams = {
   pageNumber?: number;
   pageSize?: number;
-}
+};
 
 export type GetPublishedVPLVehiclesResult = {
   vehicles: Vehicle[];
@@ -40,7 +40,7 @@ export class VehicleService {
   constructor(private readonly dataSource: DataSource) {}
 
   async getPublishedVPLVehicles(
-    params: GetPublishedVPLVehicleParams,
+    params: GetPublishedVPLVehiclesParams,
   ): Promise<GetPublishedVPLVehiclesResult> {
     const vehicleRepository = this.dataSource.getRepository(Vehicle);
 
@@ -85,9 +85,7 @@ export class VehicleService {
       .leftJoinAndSelect('vehicle.exteriorColor', 'exteriorColor')
       .leftJoinAndSelect('vehicle.interiorColor', 'interiorColor')
       .leftJoinAndSelect('vehicle.images', 'images')
-      .where({
-        id: In(vehicleIds),
-      })
+      .where('vehicle.id IN (:...vehicleIds)', { vehicleIds })
       .orderBy('vehicle.createdAt', 'DESC')
       .addOrderBy('vehicle.id', 'DESC')
       .addOrderBy('images.sortOrder', 'ASC')

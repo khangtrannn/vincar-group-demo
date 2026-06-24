@@ -1,7 +1,7 @@
 import { Arg, Ctx, Query, Resolver } from "type-graphql";
-import { GetPublishedVPLVehiclesResponseType } from "../object-types/get-published-vpl-vehicles-response.type.ts.js";
+import { GetPublishedVPLVehiclesResponseType } from "../object-types/get-published-vpl-vehicles-response.type.js";
 import { GraphQLContext } from "../../../../common/graphql/context.js";
-import { GetPublishedVPLVehiclesInput } from "../../input-types/get-published-vpl-vehicles.input.js";
+import { GetPublishedVPLVehiclesInput } from "../input-types/get-published-vpl-vehicles.input.js";
 import { VehicleService } from "../../services/vehicle.service.js";
 
 @Resolver()
