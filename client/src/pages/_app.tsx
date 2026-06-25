@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client/react'
 
 import { Provider } from '@/components/ui/provider'
 import { apolloClient } from '@/lib/apollo-client'
-import { AppHeader } from '@/components/layout/AppHeader'
+import { AppHeader } from '@/components/layout/SiteHeader'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

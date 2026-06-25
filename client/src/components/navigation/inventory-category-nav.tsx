@@ -4,14 +4,14 @@ import { useRouter } from "next/router";
 
 import { cn } from "@/lib/cn";
 
-type VehicleCategoryKey = "new-cars" | "used-cars" | "leasing";
+type InventoryCategoryKey = "new-cars" | "used-cars" | "leasing";
 
-type VehicleCategoryNavProps = {
-  activeKey?: VehicleCategoryKey;
+type InventoryCategoryNavProps = {
+  activeKey?: InventoryCategoryKey;
 };
 
 const categoryItems: Array<{
-  key: VehicleCategoryKey;
+  key: InventoryCategoryKey;
   label: string;
   href: string;
   imageUrl: string;
@@ -39,7 +39,7 @@ const categoryItems: Array<{
   },
 ];
 
-function getActiveKeyFromPath(pathname: string): VehicleCategoryKey {
+function getActiveKeyFromPath(pathname: string): InventoryCategoryKey {
   if (pathname.startsWith("/used-cars")) {
     return "used-cars";
   }
@@ -51,7 +51,7 @@ function getActiveKeyFromPath(pathname: string): VehicleCategoryKey {
   return "new-cars";
 }
 
-export function VehicleCategoryNav({ activeKey }: VehicleCategoryNavProps) {
+export function InventoryCategoryNav({ activeKey }: InventoryCategoryNavProps) {
   const router = useRouter();
   const currentActiveKey = activeKey ?? getActiveKeyFromPath(router.asPath);
 

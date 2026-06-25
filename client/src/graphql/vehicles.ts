@@ -46,3 +46,32 @@ export const GET_PUBLISHED_VPL_VEHICLE = gql`
     }
   }
 `;
+
+export const GET_PUBLISHED_VPL_VEHICLES = gql`
+  query GetPublishedVPLVehicles($input: GetPublishedVPLVehiclesInput) {
+    getPublishedVPLVehicles(input: $input) {
+      paginationInfo {
+        currentPageNumber
+        currentPageSize
+        hasNextPage
+        totalPageNumber
+      }
+      vehicles {
+        id
+        name
+        vincarId
+        price
+        leasingMonthlyPrice
+        imgUrl
+        model {
+          id
+          name
+          make {
+            id
+            name
+          }
+        }
+      }
+    }
+  }
+`

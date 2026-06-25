@@ -8,17 +8,17 @@ import {
   VStack,
 } from '@chakra-ui/react'
 
-import { getMetadataStringValue } from '../../../lib/get-metadata-value'
-import { formatCurrency } from '../../../lib/format-currency'
-import { Vehicle } from '../../../types/vehicle'
-import { CarGallery } from './CarGallery'
-import { VehicleOverview } from './VehicleOverview'
+import { getMetadataStringValue } from '../../lib/get-metadata-value'
+import { formatCurrency } from '../../lib/format-currency'
+import { Vehicle } from '../../types/vehicle'
+import { VehicleGallery } from './vehicle-gallery'
+import { VehicleOverview } from './vehicle-overview'
 
-type CarDetailPageProps = {
+type VehicleDetailPageProps = {
   vehicle: Vehicle
 }
 
-export function CarDetailPage({ vehicle }: CarDetailPageProps) {
+export function CarDetailPage({ vehicle }: VehicleDetailPageProps) {
   const transmission =
     getMetadataStringValue(vehicle.metadata, 'transmission') ??
     getMetadataStringValue(vehicle.vehicleVariant?.metadata, 'transmission') ??
@@ -73,7 +73,7 @@ export function CarDetailPage({ vehicle }: CarDetailPageProps) {
           </HStack>
         </VStack>
 
-        <CarGallery vehicle={vehicle} />
+        <VehicleGallery vehicle={vehicle} />
 
         <VehicleOverview
           bodyType={vehicle.model.bodyType}

@@ -50,3 +50,37 @@ export type GetPublishedVPLVehicleData = {
 export type GetPublishedVPLVehicleVariables = {
   vehicleId: string;
 };
+
+export type VehicleListItem = {
+  id: string
+  name: string
+  vincarId: string
+  price: number | null
+  leasingMonthlyPrice: number | null
+  imgUrl: string | null
+  model: {
+    name: string
+    make: {
+      name: string
+    }
+  }
+}
+
+export type GetPublishedVPLVehiclesData = {
+  getPublishedVPLVehicles: {
+    paginationInfo: {
+      currentPageNumber: number
+      currentPageSize: number
+      hasNextPage: boolean
+      totalPageNumber: number
+    }
+    vehicles: VehicleListItem[]
+  }
+}
+
+export type GetPublishedVPLVehiclesVariables = {
+  input: {
+    pageNumber: number
+    pageSize: number
+  }
+}

@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/graphql/*": ["./src/graphql/*"],
+      "@/types/*": ["./src/types/*"]
     }
   },
   "include": [

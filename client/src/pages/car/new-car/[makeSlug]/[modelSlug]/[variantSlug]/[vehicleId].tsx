@@ -13,8 +13,8 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 import { CarDetailPage } from '@/components/car-detail/CarDetailPage'
-import { GetPublishedVPLVehicleData, GetPublishedVPLVehicleVariables } from '../../../../../../../types/vehicle'
-import { GET_PUBLISHED_VPL_VEHICLE } from '../../../../../../../graphql/vehicles'
+import { GetPublishedVPLVehicleData, GetPublishedVPLVehicleVariables } from '../../../../../../types/vehicle'
+import { GET_PUBLISHED_VPL_VEHICLE } from '../../../../../../graphql/vehicles'
 
 export default function VehicleDetailRoute() {
   const router = useRouter()

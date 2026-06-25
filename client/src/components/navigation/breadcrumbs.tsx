@@ -6,11 +6,11 @@ type BreadcrumbItem = {
   href?: string
 }
 
-type AppBreadcrumbProps = {
+type BreadcrumbProps = {
   items: BreadcrumbItem[]
 }
 
-export function AppBreadcrumb({ items }: AppBreadcrumbProps) {
+export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav aria-label="breadcrumb">
       <ol className="flex flex-nowrap items-center gap-2 break-words text-sm text-vc-text-secondary sm:gap-2.5">

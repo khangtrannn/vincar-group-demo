@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import { Box, HStack, Image, Text, VStack, chakra } from '@chakra-ui/react'
-import { Vehicle, VehicleImage } from '../../../types/vehicle'
+import { Vehicle, VehicleImage } from '../../types/vehicle'
 
-type CarGalleryProps = {
+type VehicleGalleryProps = {
   vehicle: Vehicle
 }
 
@@ -33,7 +33,7 @@ function getGalleryImages(vehicle: Vehicle): VehicleImage[] {
   return []
 }
 
-export function CarGallery({ vehicle }: CarGalleryProps) {
+export function VehicleGallery({ vehicle }: VehicleGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   const images = useMemo(() => {
