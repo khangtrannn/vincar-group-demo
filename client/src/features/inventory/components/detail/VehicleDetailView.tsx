@@ -1,6 +1,7 @@
 import { BackLink } from '@/components/navigation/BackLink'
 
 import type { Vehicle } from '../../api/vehicle-types'
+import { VehicleDetailCtaBanner } from './VehicleDetailCtaBanner'
 import { VehicleDetailHeader } from './VehicleDetailHeader'
 import { VehicleGallery } from './VehicleGallery'
 import { VehicleOverview } from './VehicleOverview'
@@ -24,6 +25,8 @@ export function VehicleDetailView({ vehicle }: VehicleDetailViewProps) {
         </section>
 
         <VehicleOverview vehicle={vehicle} />
+
+        <VehicleDetailCtaBanner vehicle={vehicle} />
       </div>
     </main>
   )
