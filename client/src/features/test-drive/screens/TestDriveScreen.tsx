@@ -1,34 +1,19 @@
-import { skipToken, useQuery } from '@apollo/client/react'
-import { useRouter } from 'next/router'
+import { skipToken, useQuery } from "@apollo/client/react";
+import { useRouter } from "next/router";
 
-import { GET_PUBLISHED_VPL_VEHICLE } from '@/features/inventory/api/get-published-vpl-vehicle'
+import { GET_PUBLISHED_VPL_VEHICLE } from "@/features/inventory/api/get-published-vpl-vehicle";
 
-import { TestDriveCustomerFields } from '../components/TestDriveCustomerFields'
-import { TestDrivePageHeader } from '../components/TestDrivePageHeader'
-import { TestDriveVehicleSummary } from '../components/TestDriveVehicleSummary'
-
-function TestDriveFormPlaceholder() {
-  return (
-    <div className="space-y-6">
-      <div className="rounded-[20px] border border-vc-bg-primary bg-white p-5 lg:p-6">
-        <h3 className="mb-6 text-center text-body-1 font-semibold text-vc-text-primary">
-          Let&apos;s get your details
-        </h3>
-
-        <div className="max-w-[360px]">
-          <TestDriveCustomerFields />
-        </div>
-      </div>
-    </div>
-  )
-}
+import { TestDriveForm } from "../components/TestDriveForm";
+import { TestDrivePageHeader } from "../components/TestDrivePageHeader";
+import { TestDriveVehicleSummary } from "../components/TestDriveVehicleSummary";
+import { ArrowLeft } from "lucide-react";
 
 export function TestDriveScreen() {
-  const router = useRouter()
-  const vehicleId = router.query.vehicleId
+  const router = useRouter();
+  const vehicleId = router.query.vehicleId;
 
   const resolvedVehicleId =
-    typeof vehicleId === 'string' && vehicleId.length > 0 ? vehicleId : null
+    typeof vehicleId === "string" && vehicleId.length > 0 ? vehicleId : null;
 
   const { data, loading, error } = useQuery(
     GET_PUBLISHED_VPL_VEHICLE,
@@ -39,9 +24,9 @@ export function TestDriveScreen() {
           },
         }
       : skipToken,
-  )
+  );
 
-  const vehicle = data?.getPublishedVPLVehicle
+  const vehicle = data?.getPublishedVPLVehicle;
 
   if (!resolvedVehicleId || loading) {
     return (
@@ -52,7 +37,7 @@ export function TestDriveScreen() {
           </p>
         </div>
       </main>
-    )
+    );
   }
 
   if (error || !vehicle) {
@@ -64,7 +49,7 @@ export function TestDriveScreen() {
           </p>
         </div>
       </main>
-    )
+    );
   }
 
   return (
@@ -75,10 +60,26 @@ export function TestDriveScreen() {
         <section>
           <div className="mx-auto grid max-w-[1100px] gap-4 lg:grid-cols-[2fr_3fr] lg:gap-8">
             <TestDriveVehicleSummary vehicle={vehicle} />
-            <TestDriveFormPlaceholder />
+            <TestDriveForm vehicle={vehicle} />
           </div>
+        </section>
+
+        <section className="flex justify-center">
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="group inline-flex h-10 items-center justify-center gap-2 rounded-[24px] bg-transparent px-5 py-2 font-semibold text-vc-text-primary transition-all hover:bg-elevation/10 max-lg:text-body-3 lg:text-body-3 [&_svg]:h-4 [&_svg]:w-auto"
+          >
+            <span className="shrink-0">
+              <ArrowLeft aria-hidden="true" strokeWidth={2} />
+            </span>
+
+            <span className="group-hover:underline group-hover:underline-offset-8">
+              Back to Page
+            </span>
+          </button>
         </section>
       </div>
     </main>
-  )
+  );
 }
