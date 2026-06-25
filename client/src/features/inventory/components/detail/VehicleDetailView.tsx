@@ -3,6 +3,7 @@ import { BackLink } from '@/components/navigation/BackLink'
 import type { Vehicle } from '../../api/vehicle-types'
 import { VehicleDetailHeader } from './VehicleDetailHeader'
 import { VehicleGallery } from './VehicleGallery'
+import { VehicleOverview } from './VehicleOverview'
 
 type VehicleDetailViewProps = {
   vehicle: Vehicle
@@ -21,6 +22,8 @@ export function VehicleDetailView({ vehicle }: VehicleDetailViewProps) {
 
           <VehicleGallery vehicle={vehicle} />
         </section>
+
+        <VehicleOverview vehicle={vehicle} />
       </div>
     </main>
   )
