@@ -71,8 +71,4 @@ export default function VehicleDetailRoute() {
     )
   }
 
-  return (
-    <Box bg="white" minH="100vh">
-    </Box>
-  )
 }
