@@ -19,14 +19,13 @@ export function InventoryLandingLayout({
   children,
 }: InventoryLandingLayoutProps) {
   return (
-    <main>
+    <>
       <InventoryCategoryNav activeKey={activeKey} />
 
-      <div className="px-4 py-6 lg:px-10 xl:px-12">
+      <main className="mx-auto max-w-[1440px] space-y-5 px-4 pb-5 pt-5 lg:space-y-6 lg:px-10 lg:pb-8 lg:pt-0">
         <Breadcrumb items={[{ label: breadcrumbLabel }]} />
-
         {children}
-      </div>
-    </main>
+      </main>
+    </>
   )
 }

@@ -70,7 +70,7 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
 
         <div className="mt-3 space-y-2 px-2 pb-5">
           <div className="flex flex-col items-start gap-2">
-            <div className="grow text-heading-4 font-vc-semibold leading-none text-orange-500">
+            <div className="grow text-heading-4 font-semibold text-orange-500">
               {vehicle.priceLabel}
             </div>
 

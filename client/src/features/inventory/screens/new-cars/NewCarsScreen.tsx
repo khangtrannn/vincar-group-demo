@@ -11,16 +11,12 @@ export function NewCarsScreen() {
       activeKey={content.activeKey}
       breadcrumbLabel={content.breadcrumbLabel}
     >
-      <div className="mt-6">
-        <InventoryLandingHero
-          title={content.title}
-          description={content.description}
-        />
-      </div>
+      <InventoryLandingHero
+        title={content.title}
+        description={content.description}
+      />
 
-      <div className="mt-8">
-        <VehicleListingSection />
-      </div>
+      <VehicleListingSection />
     </InventoryLandingLayout>
   )
 }
