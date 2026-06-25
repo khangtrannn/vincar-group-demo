@@ -12,7 +12,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <Provider>
       <ApolloProvider client={apolloClient}>
         <AppHeader />
-        <Component {...pageProps} />
+        <div className="min-h-screen pt-[var(--header-height-mobile)] lg:pt-[var(--header-height)]">
+          <Component {...pageProps} />
+        </div>
       </ApolloProvider>
     </Provider>
   )
