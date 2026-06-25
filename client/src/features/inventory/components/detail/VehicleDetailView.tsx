@@ -1,6 +1,8 @@
 import { BackLink } from '@/components/navigation/BackLink'
 
 import type { Vehicle } from '../../api/vehicle-types'
+import { VehicleDetailHeader } from './VehicleDetailHeader'
+import { VehicleGallery } from './VehicleGallery'
 
 type VehicleDetailViewProps = {
   vehicle: Vehicle
@@ -15,11 +17,9 @@ export function VehicleDetailView({ vehicle }: VehicleDetailViewProps) {
             <BackLink href="/new-cars" label="Back to New Cars" />
           </div>
 
-          <div className="flex flex-col items-center gap-1 pb-8">
-            <h1 className="text-center text-heading-4 font-semibold text-vc-text-primary">
-              {vehicle.name}
-            </h1>
-          </div>
+          <VehicleDetailHeader vehicle={vehicle} />
+
+          <VehicleGallery vehicle={vehicle} />
         </section>
       </div>
     </main>
