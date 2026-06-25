@@ -1,6 +1,7 @@
+
 import { Search } from 'lucide-react'
 
-export function NewCarsPageHeader() {
+export function NewCarsHero() {
   return (
     <section className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between lg:gap-20">
       <div className="flex-1">

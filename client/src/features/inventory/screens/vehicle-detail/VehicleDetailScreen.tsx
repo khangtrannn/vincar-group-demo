@@ -1,3 +1,4 @@
+
 import { GET_PUBLISHED_VPL_VEHICLE, GetPublishedVPLVehicleData, GetPublishedVPLVehicleVariables } from '@/features/inventory/api/get-published-vpl-vehicle'
 import { useQuery } from '@apollo/client/react'
 import {
@@ -12,6 +13,7 @@ import {
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
+import { VehicleDetailView } from '../../components/detail/VehicleDetailView'
 
 export default function VehicleDetailRoute() {
   const router = useRouter()
@@ -71,8 +73,5 @@ export default function VehicleDetailRoute() {
     )
   }
 
-  return (
-    <Box bg="white" minH="100vh">
-    </Box>
-  )
+  return <VehicleDetailView vehicle={vehicle} />
 }

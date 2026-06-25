@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client';
 
+import type { Vehicle } from './vehicle-types';
+
+export type GetPublishedVPLVehicleData = {
+  getPublishedVPLVehicle: Vehicle | null;
+};
+
+export type GetPublishedVPLVehicleVariables = {
+  vehicleId: string;
+};
+
 export const GET_PUBLISHED_VPL_VEHICLE = gql`
   query GetPublishedVPLVehicle($vehicleId: ID!) {
     getPublishedVPLVehicle(vehicleId: $vehicleId) {
@@ -46,32 +56,3 @@ export const GET_PUBLISHED_VPL_VEHICLE = gql`
     }
   }
 `;
-
-export const GET_PUBLISHED_VPL_VEHICLES = gql`
-  query GetPublishedVPLVehicles($input: GetPublishedVPLVehiclesInput) {
-    getPublishedVPLVehicles(input: $input) {
-      paginationInfo {
-        currentPageNumber
-        currentPageSize
-        hasNextPage
-        totalPageNumber
-      }
-      vehicles {
-        id
-        name
-        vincarId
-        price
-        leasingMonthlyPrice
-        imgUrl
-        model {
-          id
-          name
-          make {
-            id
-            name
-          }
-        }
-      }
-    }
-  }
-`
