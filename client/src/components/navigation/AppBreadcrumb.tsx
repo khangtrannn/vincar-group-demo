@@ -46,7 +46,7 @@ export function AppBreadcrumb({ items }: AppBreadcrumbProps) {
                     role="link"
                     aria-disabled="true"
                     aria-current="page"
-                    className="text-sm font-semibold text-vc-text-primary"
+                    className="text-sm font-vc-semibold text-vc-text-primary"
                   >
                     <span>{item.label}</span>
                   </span>

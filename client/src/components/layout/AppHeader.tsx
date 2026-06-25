@@ -71,7 +71,7 @@ export function AppHeader() {
                         href={item.href}
                         className={cn(
                           'group flex h-[52px] w-max items-center justify-center rounded-none border-b-2 border-transparent bg-transparent p-4',
-                          'text-body-2 font-semibold transition-all',
+                          'text-body-2 font-vc-semibold transition-all',
                           'hover:bg-transparent hover:text-accent-foreground',
                           'focus:bg-accent focus:text-accent-foreground focus:outline-none',
                           'data-[state=open]:border-vc-btn-primary-gray-default data-[state=open]:bg-transparent data-[state=open]:text-accent-foreground',
