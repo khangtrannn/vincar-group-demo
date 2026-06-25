@@ -1,91 +1,14 @@
 import { ArrowRight } from 'lucide-react'
 
 import type { Vehicle } from '../../api/vehicle-types'
+import { mapVehicleToOverviewItems } from '../../mappers/map-vehicle-to-overview-items'
 
 type VehicleOverviewProps = {
   vehicle: Vehicle
 }
 
-type OverviewItem = {
-  label: string
-  value: string
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value)
-}
-
-function formatDisplayValue(value: string | null | undefined) {
-  if (!value) {
-    return '-'
-  }
-
-  return value
-    .replace(/_/g, ' ')
-    .replace(/([a-z])([A-Z])/g, '$1 $2')
-    .trim()
-    .toLowerCase()
-    .replace(/\b\w/g, (char) => char.toUpperCase())
-}
-
-function getTransmission(vehicle: Vehicle) {
-  const variantMetadata = vehicle.vehicleVariant?.metadata
-
-  if (!isRecord(variantMetadata)) {
-    return '-'
-  }
-
-  const specifications = variantMetadata.specifications
-
-  if (!isRecord(specifications)) {
-    return '-'
-  }
-
-  const transmission = specifications.transmission
-
-  if (typeof transmission !== 'string' || transmission.trim().length === 0) {
-    return '-'
-  }
-
-  // Reference simplifies values like "Single-Speed Automatic" to "Automatic".
-  if (transmission.toLowerCase().includes('automatic')) {
-    return 'Automatic'
-  }
-
-  if (transmission.toLowerCase().includes('manual')) {
-    return 'Manual'
-  }
-
-  return transmission
-}
-
-function getOverviewItems(vehicle: Vehicle): OverviewItem[] {
-  return [
-    {
-      label: 'Body type',
-      value: formatDisplayValue(vehicle.model.bodyType),
-    },
-    {
-      label: 'Fuel',
-      value: formatDisplayValue(vehicle.model.fuelType),
-    },
-    {
-      label: 'Transmission',
-      value: getTransmission(vehicle),
-    },
-    {
-      label: 'Exterior Color',
-      value: vehicle.exteriorColor?.name ?? '-',
-    },
-    {
-      label: 'Interior Color',
-      value: vehicle.interiorColor?.name ?? '-',
-    },
-  ]
-}
-
 export function VehicleOverview({ vehicle }: VehicleOverviewProps) {
-  const overviewItems = getOverviewItems(vehicle)
+  const overviewItems = mapVehicleToOverviewItems(vehicle)
 
   return (
     <section className="space-y-4 py-5 lg:space-y-8 lg:py-12">
