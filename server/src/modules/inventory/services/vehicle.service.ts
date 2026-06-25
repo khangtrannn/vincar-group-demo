@@ -13,8 +13,8 @@ export type GetPublishedVPLVehiclesResult = {
     currentPageSize: number;
     hasNextPage: boolean;
     totalPageNumber: number;
-  }
-}
+  };
+};
 
 const DEFAULT_PAGE_NUMBER = 1;
 const DEFAULT_PAGE_SIZE = 16;
@@ -39,6 +39,24 @@ function normalizePageSize(pageSize?: number): number {
 export class VehicleService {
   constructor(private readonly dataSource: DataSource) {}
 
+  async getPublishedVPLVehicleById(vehicleId: string): Promise<Vehicle | null> {
+    const vehicleRepository = this.dataSource.getRepository(Vehicle);
+
+    return vehicleRepository
+      .createQueryBuilder("vehicle")
+      .leftJoinAndSelect("vehicle.company", "company")
+      .leftJoinAndSelect("vehicle.model", "model")
+      .leftJoinAndSelect("model.make", "make")
+      .leftJoinAndSelect("vehicle.vehicleVariant", "vehicleVariant")
+      .leftJoinAndSelect("vehicle.exteriorColor", "exteriorColor")
+      .leftJoinAndSelect("vehicle.interiorColor", "interiorColor")
+      .leftJoinAndSelect("vehicle.images", "images")
+      .where("vehicle.id = :vehicleId", { vehicleId })
+      .orderBy("images.sortOrder", "ASC")
+      .addOrderBy("images.id", "ASC")
+      .getOne();
+  }
+
   async getPublishedVPLVehicles(
     params: GetPublishedVPLVehiclesParams,
   ): Promise<GetPublishedVPLVehiclesResult> {
@@ -49,15 +67,15 @@ export class VehicleService {
     const skip = (pageNumber - 1) * pageSize;
 
     const baseQuery = vehicleRepository
-      .createQueryBuilder('vehicle')
-      .orderBy('vehicle.createdAt', 'DESC')
-      .addOrderBy('vehicle.id', 'DESC');
+      .createQueryBuilder("vehicle")
+      .orderBy("vehicle.createdAt", "DESC")
+      .addOrderBy("vehicle.id", "DESC");
 
     const totalCount = await baseQuery.getCount();
 
     const vehicleIdRows = await baseQuery
       .clone()
-      .select('vehicle.id', 'id')
+      .select("vehicle.id", "id")
       .skip(skip)
       .take(pageSize)
       .getRawMany<{ id: string }>();
@@ -77,18 +95,18 @@ export class VehicleService {
     }
 
     const vehicles = await vehicleRepository
-      .createQueryBuilder('vehicle')
-      .leftJoinAndSelect('vehicle.company', 'company')
-      .leftJoinAndSelect('vehicle.model', 'model')
-      .leftJoinAndSelect('model.make', 'make')
-      .leftJoinAndSelect('vehicle.vehicleVariant', 'vehicleVariant')
-      .leftJoinAndSelect('vehicle.exteriorColor', 'exteriorColor')
-      .leftJoinAndSelect('vehicle.interiorColor', 'interiorColor')
-      .leftJoinAndSelect('vehicle.images', 'images')
-      .where('vehicle.id IN (:...vehicleIds)', { vehicleIds })
-      .orderBy('vehicle.createdAt', 'DESC')
-      .addOrderBy('vehicle.id', 'DESC')
-      .addOrderBy('images.sortOrder', 'ASC')
+      .createQueryBuilder("vehicle")
+      .leftJoinAndSelect("vehicle.company", "company")
+      .leftJoinAndSelect("vehicle.model", "model")
+      .leftJoinAndSelect("model.make", "make")
+      .leftJoinAndSelect("vehicle.vehicleVariant", "vehicleVariant")
+      .leftJoinAndSelect("vehicle.exteriorColor", "exteriorColor")
+      .leftJoinAndSelect("vehicle.interiorColor", "interiorColor")
+      .leftJoinAndSelect("vehicle.images", "images")
+      .where("vehicle.id IN (:...vehicleIds)", { vehicleIds })
+      .orderBy("vehicle.createdAt", "DESC")
+      .addOrderBy("vehicle.id", "DESC")
+      .addOrderBy("images.sortOrder", "ASC")
       .getMany();
 
     const vehicleById = new Map(
