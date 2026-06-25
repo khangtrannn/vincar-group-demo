@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql, type TypedDocumentNode } from '@apollo/client';
 
 export type VehicleListItem = {
   id: string;
@@ -8,8 +8,10 @@ export type VehicleListItem = {
   leasingMonthlyPrice: number | null;
   imgUrl: string | null;
   model: {
+    id: string;
     name: string;
     make: {
+      id: string;
       name: string;
     };
   };
@@ -34,7 +36,10 @@ export type GetPublishedVPLVehiclesVariables = {
   };
 };
 
-export const GET_PUBLISHED_VPL_VEHICLES = gql`
+export const GET_PUBLISHED_VPL_VEHICLES: TypedDocumentNode<
+  GetPublishedVPLVehiclesData,
+  GetPublishedVPLVehiclesVariables
+> = gql`
   query GetPublishedVPLVehicles($input: GetPublishedVPLVehiclesInput!) {
     getPublishedVPLVehicles(input: $input) {
       paginationInfo {
@@ -51,8 +56,10 @@ export const GET_PUBLISHED_VPL_VEHICLES = gql`
         leasingMonthlyPrice
         imgUrl
         model {
+          id
           name
           make {
+            id
             name
           }
         }

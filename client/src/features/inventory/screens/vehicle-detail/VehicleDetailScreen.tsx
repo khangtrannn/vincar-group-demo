@@ -1,30 +1,26 @@
 
-import { GET_PUBLISHED_VPL_VEHICLE, GetPublishedVPLVehicleData, GetPublishedVPLVehicleVariables } from '@/features/inventory/api/get-published-vpl-vehicle'
+import { GET_PUBLISHED_VPL_VEHICLE } from '@/features/inventory/api/get-published-vpl-vehicle'
 import { useQuery } from '@apollo/client/react'
 import {
-  Box,
   Button,
   Center,
   Container,
   Heading,
   Spinner,
   Text,
-  VStack,
+  VStack
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import { VehicleDetailView } from '../../components/detail/VehicleDetailView'
 
-export default function VehicleDetailRoute() {
+export function VehicleDetailScreen() {
   const router = useRouter()
   const vehicleId = router.query.vehicleId
 
   const shouldSkipQuery = !router.isReady || typeof vehicleId !== 'string'
 
-  const { data, loading, error } = useQuery<
-    GetPublishedVPLVehicleData,
-    GetPublishedVPLVehicleVariables
-  >(GET_PUBLISHED_VPL_VEHICLE, {
+  const { data, loading, error } = useQuery(GET_PUBLISHED_VPL_VEHICLE, {
     variables: {
       vehicleId: typeof vehicleId === 'string' ? vehicleId : '',
     },

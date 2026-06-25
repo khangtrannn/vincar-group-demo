@@ -1,16 +1,19 @@
-import { gql } from '@apollo/client';
+import { gql, type TypedDocumentNode } from '@apollo/client'
 
-import type { Vehicle } from './vehicle-types';
+import type { Vehicle } from './vehicle-types'
 
 export type GetPublishedVPLVehicleData = {
-  getPublishedVPLVehicle: Vehicle | null;
-};
+  getPublishedVPLVehicle: Vehicle | null
+}
 
 export type GetPublishedVPLVehicleVariables = {
-  vehicleId: string;
-};
+  vehicleId: string
+}
 
-export const GET_PUBLISHED_VPL_VEHICLE = gql`
+export const GET_PUBLISHED_VPL_VEHICLE: TypedDocumentNode<
+  GetPublishedVPLVehicleData,
+  GetPublishedVPLVehicleVariables
+> = gql`
   query GetPublishedVPLVehicle($vehicleId: ID!) {
     getPublishedVPLVehicle(vehicleId: $vehicleId) {
       id
@@ -55,4 +58,4 @@ export const GET_PUBLISHED_VPL_VEHICLE = gql`
       }
     }
   }
-`;
+`
