@@ -10,6 +10,7 @@ import {
 import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
 import { VehicleCategoryNav } from "@/components/navigation/VehicleCategoryNav";
+import { AppBreadcrumb } from "@/components/navigation/AppBreadcrumb";
 
 type GetPublishedVPLVehiclesData = {
   getPublishedVPLVehicles: {
@@ -113,7 +114,15 @@ export default function HomePage() {
     <>
       <VehicleCategoryNav activeKey="new-cars" />
 
-       {/*  content  */}
+      <main className="max-w-[1440px] mx-auto px-4 lg:px-10 pt-5 lg:pt-0 pb-5 lg:pb-8 lg:space-y-6 space-y-5">
+        <AppBreadcrumb
+          items={[
+            {
+              label: "New cars",
+            },
+          ]}
+        />
+      </main>
     </>
   );
 }
