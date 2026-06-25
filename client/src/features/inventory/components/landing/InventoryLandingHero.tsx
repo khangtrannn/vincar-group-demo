@@ -12,7 +12,7 @@ export function InventoryLandingHero({
   return (
     <section className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between lg:gap-20">
       <div className="flex-1">
-        <h1 className="mb-3 text-heading-4 font-vc-semibold text-vc-text-primary">
+        <h1 className="mb-3 text-heading-4 font-vc-bold text-vc-text-primary">
           {title}
         </h1>
 

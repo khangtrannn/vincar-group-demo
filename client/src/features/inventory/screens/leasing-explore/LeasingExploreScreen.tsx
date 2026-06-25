@@ -1,20 +1,25 @@
+import { inventoryLandingContent } from '../../constants/inventory-landing-content'
 import { InventoryLandingHero } from '../../components/landing/InventoryLandingHero'
 import { InventoryLandingLayout } from '../../components/landing/InventoryLandingLayout'
+import { VehicleListingSection } from '../../components/listing/VehicleListingSection'
 
-const LEASING_EXPLORE_DESCRIPTION =
-  "Whether you're seeking a powerful SUV, a stylish sedan, or an eco-friendly electric vehicle, VINCAR provides a wide range of options to suit your needs and preferences. Discover your perfect vehicle today and experience the excellence of modern driving with VINCAR's new car lineup."
+const content = inventoryLandingContent.leasingExplore
 
 export function LeasingExploreScreen() {
   return (
     <InventoryLandingLayout
-      activeKey="leasing"
-      breadcrumbLabel="Rental & Leasing"
+      activeKey={content.activeKey}
+      breadcrumbLabel={content.breadcrumbLabel}
     >
       <div className="mt-6">
         <InventoryLandingHero
-          title="Rental & Leasing"
-          description={LEASING_EXPLORE_DESCRIPTION}
+          title={content.title}
+          description={content.description}
         />
+      </div>
+
+      <div className="mt-8">
+        <VehicleListingSection />
       </div>
     </InventoryLandingLayout>
   )

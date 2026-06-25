@@ -22,7 +22,7 @@ export function InventoryLandingLayout({
     <main>
       <InventoryCategoryNav activeKey={activeKey} />
 
-      <div className="px-4 py-6 lg:px-10">
+      <div className="px-4 py-6 lg:px-10 xl:px-12">
         <Breadcrumb items={[{ label: breadcrumbLabel }]} />
 
         {children}

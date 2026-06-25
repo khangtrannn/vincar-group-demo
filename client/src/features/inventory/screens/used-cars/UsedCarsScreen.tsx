@@ -1,20 +1,25 @@
+import { inventoryLandingContent } from '../../constants/inventory-landing-content'
 import { InventoryLandingHero } from '../../components/landing/InventoryLandingHero'
 import { InventoryLandingLayout } from '../../components/landing/InventoryLandingLayout'
+import { VehicleListingSection } from '../../components/listing/VehicleListingSection'
 
-const USED_CARS_DESCRIPTION =
-  'Whether you’re looking to buy a used car in Singapore for daily commuting or seeking a luxury option at a competitive price, we provide a range of 2nd hand cars for sale that cater to all preferences. As one of the leading used car dealers in Singapore, VINCAR ensures a seamless buying experience with transparent pricing and professional service.'
+const content = inventoryLandingContent.usedCars
 
 export function UsedCarsScreen() {
   return (
     <InventoryLandingLayout
-      activeKey="used-cars"
-      breadcrumbLabel="Pre-owned cars"
+      activeKey={content.activeKey}
+      breadcrumbLabel={content.breadcrumbLabel}
     >
       <div className="mt-6">
         <InventoryLandingHero
-          title="Used Cars for Sale in Singapore"
-          description={USED_CARS_DESCRIPTION}
+          title={content.title}
+          description={content.description}
         />
+      </div>
+
+      <div className="mt-8">
+        <VehicleListingSection />
       </div>
     </InventoryLandingLayout>
   )
