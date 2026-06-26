@@ -5,12 +5,16 @@ import { formatVehiclePrice } from '../../utils/format-vehicle-price'
 
 type VehicleDetailHeaderProps = {
   vehicle: Vehicle
+  onTradeInClick: () => void
 }
 
 const baseButtonClassName =
   'inline-flex h-10 items-center justify-center gap-2 rounded-[24px] px-5 py-2 font-bold transition-all max-lg:text-body-3 lg:text-body-3 [&_svg]:h-4 [&_svg]:w-auto lg:[&_svg]:h-4'
 
-export function VehicleDetailHeader({ vehicle }: VehicleDetailHeaderProps) {
+export function VehicleDetailHeader({
+  vehicle,
+  onTradeInClick,
+}: VehicleDetailHeaderProps) {
   const priceLabel = formatVehiclePrice(vehicle.price)
 
   return (
@@ -20,7 +24,7 @@ export function VehicleDetailHeader({ vehicle }: VehicleDetailHeaderProps) {
           {vehicle.name}
         </h1>
 
-        <div className="text-heading-5 font-[900] text-orange-500">
+        <div className="text-heading-5 font-extrabold text-orange-500">
           {priceLabel}
         </div>
       </div>
@@ -35,6 +39,7 @@ export function VehicleDetailHeader({ vehicle }: VehicleDetailHeaderProps) {
 
         <button
           type="button"
+          onClick={onTradeInClick}
           className={`${baseButtonClassName} border border-slate-600 bg-transparent text-vc-text-primary hover:border-slate-700 hover:bg-neutral-900 hover:text-white active:border-slate-900 active:bg-elevation/10`}
         >
           Trade In

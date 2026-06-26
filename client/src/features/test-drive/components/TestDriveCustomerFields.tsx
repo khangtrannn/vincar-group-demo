@@ -1,11 +1,11 @@
 import { Mail, Phone, User } from 'lucide-react'
 
-import { TestDriveTextField } from './TestDriveTextField'
+import { FormTextField } from '@/components/ui/FormTextField'
 
 export function TestDriveCustomerFields() {
   return (
     <div className="space-y-4 lg:space-y-6">
-      <TestDriveTextField
+      <FormTextField
         label="Full name"
         name="fullName"
         placeholder="ex. John Dowe"
@@ -13,7 +13,7 @@ export function TestDriveCustomerFields() {
         icon={User}
       />
 
-      <TestDriveTextField
+      <FormTextField
         label="Phone number"
         name="phoneNumber"
         type="tel"
@@ -22,7 +22,7 @@ export function TestDriveCustomerFields() {
         icon={Phone}
       />
 
-      <TestDriveTextField
+      <FormTextField
         label="Email"
         name="email"
         type="email"

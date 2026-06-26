@@ -359,3 +359,63 @@
     }
   }
 }
+
+@keyframes trade-dialog-overlay-show {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes trade-dialog-overlay-hide {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes trade-dialog-content-show {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes trade-dialog-content-hide {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+}
+
+.trade-dialog-overlay[data-state='open'] {
+  animation: trade-dialog-overlay-show 160ms ease-out;
+}
+
+.trade-dialog-overlay[data-state='closed'] {
+  animation: trade-dialog-overlay-hide 120ms ease-in;
+}
+
+.trade-dialog-content[data-state='open'] {
+  animation: trade-dialog-content-show 190ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trade-dialog-content[data-state='closed'] {
+  animation: trade-dialog-content-hide 120ms ease-in;
+}
